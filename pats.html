@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pat's AC & Heating | Buckeye, AZ | AC, Heating & Refrigeration Since 1987</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #d97706;
+      --accent-dark: #b45309;
+      --accent-light: #fffbeb;
+      --navy: #0f172a;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --bg-alt: #f8fafc;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.07);
+      --shadow-hover: 0 8px 32px rgba(0,0,0,0.13);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-area { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+    .nav-cta {
+      background: var(--accent); color: #fff; font-weight: 700; font-size: 0.9rem;
+      padding: 9px 18px; border-radius: 8px; transition: background 0.2s, transform 0.1s; white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 55%, #1e40af 100%);
+      color: #fff; padding: 72px 20px 80px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(217,119,6,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .container { max-width: 680px; margin: 0 auto; padding: 0 20px; position: relative; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px; padding: 5px 14px;
+      font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.9);
+      margin-bottom: 22px; backdrop-filter: blur(8px);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 900;
+      line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.8); margin-bottom: 28px; }
+    .hero-stars {
+      display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 32px;
+    }
+    .stars-icons { color: #fbbf24; font-size: 1.1rem; letter-spacing: 2px; }
+    .stars-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-primary {
+      background: var(--accent); color: #fff; font-weight: 800; font-size: 1rem;
+      padding: 14px 28px; border-radius: 10px; box-shadow: 0 4px 20px rgba(217,119,6,0.4);
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.3);
+      color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 28px; border-radius: 10px;
+      backdrop-filter: blur(8px); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+    .trust-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .trust-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85);
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--navy); padding: 20px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+    }
+    .trust-item { display: flex; flex-direction: column; align-items: center; padding: 12px 8px; text-align: center; }
+    .trust-icon { font-size: 1.5rem; margin-bottom: 4px; }
+    .trust-value { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
+    .trust-label { font-size: 0.7rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* SECTIONS */
+    section { padding: 64px 0; }
+    section.alt { background: var(--bg-alt); }
+    .section-tag {
+      display: inline-block; background: var(--accent-light); color: var(--accent);
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 12px;
+    }
+    .section-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 900; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 10px; }
+    .section-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 36px; }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .service-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 22px 18px; transition: all 0.2s; cursor: default;
+    }
+    .service-card:hover { border-color: var(--accent); box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .service-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .service-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .service-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* WHY US */
+    .why-table { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .why-header { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--navy); padding: 14px 16px; }
+    .why-header-cell { font-size: 0.8rem; font-weight: 700; text-align: center; color: rgba(255,255,255,0.9); }
+    .why-header-cell.highlight { color: var(--accent); }
+    .why-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 14px 16px; border-bottom: 1px solid var(--border); align-items: center; }
+    .why-row:last-child { border-bottom: none; }
+    .why-row:nth-child(even) { background: var(--bg-alt); }
+    .why-feature { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+    .why-cell { text-align: center; font-size: 0.85rem; }
+    .why-cell.bad { color: #ef4444; font-size: 1rem; }
+    .why-cell.good { color: #10b981; font-weight: 700; }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; }
+    .step { display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff;
+      font-weight: 900; font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .step-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .step-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* REVIEWS */
+    .reviews-grid { display: flex; flex-direction: column; gap: 14px; }
+    .review-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 22px; box-shadow: var(--shadow); position: relative;
+    }
+    .review-card::before {
+      content: '\201C'; position: absolute; top: 14px; right: 20px;
+      font-size: 4rem; line-height: 1; color: var(--accent); opacity: 0.12;
+      font-family: Georgia, serif;
+    }
+    .review-stars { color: #fbbf24; font-size: 0.9rem; margin-bottom: 10px; letter-spacing: 2px; }
+    .review-text { font-size: 0.88rem; color: var(--text); line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+    .review-footer { display: flex; align-items: center; justify-content: space-between; }
+    .review-author { font-size: 0.78rem; font-weight: 700; }
+    .review-date { font-size: 0.72rem; color: var(--text-muted); }
+    .yelp-tag { display: inline-flex; align-items: center; gap: 5px; background: #d32323; color: #fff; font-size: 0.68rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    details { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s; }
+    details[open] { border-color: var(--accent); }
+    summary {
+      padding: 18px 20px; font-size: 0.92rem; font-weight: 700; cursor: pointer;
+      list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--accent); transition: transform 0.2s; flex-shrink: 0; margin-left: 12px; }
+    details[open] summary::after { transform: rotate(45deg); }
+    .faq-body { padding: 0 20px 18px; font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* INSPECTION CTA */
+    .inspection-section {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      padding: 56px 0; text-align: center;
+    }
+    .inspection-section .section-title { color: #fff; }
+    .inspection-section .section-sub { color: rgba(255,255,255,0.7); }
+    .inspection-form {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius); padding: 28px 24px; backdrop-filter: blur(12px); margin-top: 28px;
+    }
+    .form-row { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
+    .form-input {
+      width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 13px 16px; font-size: 0.92rem; color: #fff;
+      font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.4); }
+    .form-input:focus { border-color: var(--accent); }
+    select.form-input option { background: #1e3a5f; color: #fff; }
+    .form-submit {
+      width: 100%; background: var(--accent); color: #fff; font-weight: 800; font-size: 1rem;
+      padding: 15px; border: none; border-radius: 10px; cursor: pointer;
+      font-family: 'Inter', sans-serif; transition: all 0.2s; box-shadow: 0 4px 20px rgba(217,119,6,0.4);
+    }
+    .form-submit:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .form-note { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 10px; text-align: center; }
+
+    /* SERVICE AREA */
+    .areas { display: flex; flex-wrap: wrap; gap: 8px; }
+    .area-chip { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 100px; padding: 6px 14px; font-size: 0.82rem; font-weight: 500; color: var(--text-muted); }
+    .area-chip.primary { background: var(--accent-light); border-color: #fde68a; color: var(--accent); font-weight: 700; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 40px 20px 24px; text-align: center; }
+    .footer-name { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .footer-name span { color: var(--accent); }
+    .footer-phone { font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-bottom: 16px; }
+    .footer-phone a { color: inherit; }
+    .footer-details { font-size: 0.82rem; margin-bottom: 20px; line-height: 1.8; }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0; }
+    .footer-credit { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+
+    /* FLOATING CALL BUTTON */
+    .float-call {
+      position: fixed; bottom: 24px; right: 20px; z-index: 300;
+      background: var(--accent); color: #fff; font-weight: 800; font-size: 0.9rem;
+      padding: 14px 22px; border-radius: 50px;
+      box-shadow: 0 4px 24px rgba(217,119,6,0.5);
+      display: flex; align-items: center; gap: 8px;
+      animation: pulse 2.5s ease-out infinite;
+    }
+    .float-call:hover { transform: scale(1.06); }
+    @keyframes pulse {
+      0%   { box-shadow: 0 4px 24px rgba(217,119,6,0.5), 0 0 0 0 rgba(217,119,6,0.4); }
+      70%  { box-shadow: 0 4px 24px rgba(217,119,6,0.5), 0 0 0 14px rgba(217,119,6,0); }
+      100% { box-shadow: 0 4px 24px rgba(217,119,6,0.5), 0 0 0 0 rgba(217,119,6,0); }
+    }
+
+    @media (max-width: 480px) {
+      .trust-bar { grid-template-columns: repeat(2, 1fr); }
+      .float-call .float-label { display: none; }
+      .nav-area { display: none; }
+    }
+    @media (min-width: 560px) {
+      .form-row { flex-direction: row; }
+    }
+  </style>
+<meta name="robots" content="noindex" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Pat's<span> AC & Heating</span></div>
+  <div class="nav-right">
+    <span class="nav-area">Buckeye, AZ</span>
+    <a href="tel:6233864061" class="nav-cta">📞 (623) 386-4061</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">🌵 Buckeye's Hometown HVAC — Since 1987</div>
+    <h1>Nearly 40 Years<br/><em>Keeping Buckeye Cool.</em></h1>
+    <p class="hero-sub">Family owned and operated by the Richmire family. AC, heating, and refrigeration for the far West Valley — done right since 1987.</p>
+    <div class="hero-stars">
+      <span class="stars-icons">★★★★★</span>
+      <span class="stars-label">100% Recommended · Facebook Reviews</span>
+    </div>
+    <div class="hero-btns">
+      <a href="tel:6233864061" class="btn-primary">📞 Call Pat's Now</a>
+      <a href="#inspection" class="btn-secondary">🔍 Book Free Estimate</a>
+    </div>
+    <div class="trust-pills">
+      <span class="trust-pill">✓ Licensed ROC 259434</span>
+      <span class="trust-pill">✓ Since 1987</span>
+      <span class="trust-pill">✓ Open 7 Days</span>
+      <span class="trust-pill">✓ Upfront Pricing</span>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <span class="trust-icon">🏆</span>
+    <span class="trust-value">Since '87</span>
+    <span class="trust-label">In Buckeye</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">📜</span>
+    <span class="trust-value">ROC</span>
+    <span class="trust-label">#259434</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">👍</span>
+    <span class="trust-value">100%</span>
+    <span class="trust-label">FB Recommend</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">📅</span>
+    <span class="trust-value">7 Days</span>
+    <span class="trust-label">8am – 5pm</span>
+  </div>
+
+<section>
+  <div class="container">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Full-Service HVAC<br/>Done Right</h2>
+    <p class="section-sub">From emergency repairs to full system installs — all backed by Pat's's hands-on experience.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">❄️</span>
+        <div class="service-name">AC Repair</div>
+        <div class="service-desc">Fast diagnosis on all makes and models. Same-day service when you need it most.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <div class="service-name">AC Installation</div>
+        <div class="service-desc">Energy-efficient systems with honest quotes. No upsells, no surprises.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔥</span>
+        <div class="service-name">Heating &amp; Furnace</div>
+        <div class="service-desc">Furnace repair, heat pump service, and winter tune-ups across the West Valley.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🛠️</span>
+        <div class="service-name">Maintenance</div>
+        <div class="service-desc">Seasonal tune-ups that prevent breakdowns and keep energy bills low.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="alt">
+  <div class="container">
+    <div class="section-tag">Why Pat's</div>
+    <h2 class="section-title">We're Not a Big Chain.<br/>That's the Point.</h2>
+    <p class="section-sub">When you call a big HVAC company, you get whoever's available. With Pat's, you get the Richmire family — every time.</p>
+    <div class="why-table">
+      <div class="why-header">
+        <div class="why-header-cell">What Matters</div>
+        <div class="why-header-cell">Big Companies</div>
+        <div class="why-header-cell highlight">Pat's ✓</div>
+      </div>
+      <div class="why-row">
+        <div class="why-feature">Who shows up</div>
+        <div class="why-cell bad">❌ Random tech</div>
+        <div class="why-cell good">The family, always</div>
+      </div>
+      <div class="why-row">
+        <div class="why-feature">Pricing</div>
+        <div class="why-cell bad">❌ Upsells &amp; fees</div>
+        <div class="why-cell good">Upfront &amp; fair</div>
+      </div>
+      <div class="why-row">
+        <div class="why-feature">Response time</div>
+        <div class="why-cell bad">❌ Days out</div>
+        <div class="why-cell good">Same day</div>
+      </div>
+      <div class="why-row">
+        <div class="why-feature">Communication</div>
+        <div class="why-cell bad">❌ Call center</div>
+        <div class="why-cell good">Direct to the owner</div>
+      </div>
+      <div class="why-row">
+        <div class="why-feature">Experience</div>
+        <div class="why-cell bad">❌ Varies by tech</div>
+        <div class="why-cell good">Decades, every job</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="container">
+    <div class="section-tag">The Process</div>
+    <h2 class="section-title">Simple. Fast.<br/>Done Right.</h2>
+    <p class="section-sub">No complicated process. No waiting around. Just HVAC fixed by someone who knows what they're doing.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Call or text Pat's directly</div>
+          <div class="step-desc">No phone trees, no hold music. A real person answers and you'll know within minutes when we can be there.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Same-day visit, honest diagnosis</div>
+          <div class="step-desc">We show up on time, find the issue, and explain what's wrong in plain English — no jargon, no pressure.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Fair price. Problem solved.</div>
+          <div class="step-desc">You get a firm quote before any work starts. No surprise charges. We fix it and you're cool again.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+    <p class="section-sub">What Buckeye homeowners ask most before calling.</p>
+    <div class="faq-list">
+      <details>
+        <summary>How fast can you get here?</summary>
+        <div class="faq-body">Most calls get a same-day visit. We're based right here in the West Valley and keep the schedule flexible for urgent situations. Call now for a straight answer on timing.</div>
+      </details>
+      <details>
+        <summary>What does a typical repair cost?</summary>
+        <div class="faq-body">It depends on the issue — a capacitor replacement is much less than a refrigerant recharge or compressor swap. What doesn't change: you get a firm quote before any work starts. No surprises.</div>
+      </details>
+      <details>
+        <summary>Are you licensed and insured?</summary>
+        <div class="faq-body">Yes. Pat's AC & Heating is a licensed Arizona contractor — ROC #259434 — and has been family owned and operated in Buckeye since 1987.</div>
+      </details>
+      <details>
+        <summary>What brands do you work on?</summary>
+        <div class="faq-body">All major brands — Carrier, Trane, Lennox, Rheem, Goodman, American Standard, and more. If it heats or cools, we can diagnose and fix it.</div>
+      </details>
+      <details>
+        <summary>Do you offer free estimates?</summary>
+        <div class="faq-body">Yes — free estimates on all new installations and replacements. For repairs, we diagnose the issue on-site and give you a firm price before starting any work.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FREE INSPECTION CTA -->
+<div class="inspection-section" id="inspection">
+  <div class="container">
+    <div class="section-tag" style="background:rgba(217,119,6,0.2);color:#fb923c;">Limited Availability</div>
+    <h2 class="section-title">Book a Free AC Inspection</h2>
+    <p class="section-sub">No obligation. We check your system, tell you what we find, and give you honest options. No pressure, no sales pitch.</p>
+    <div class="inspection-form">
+      <div class="form-row">
+        <input type="text" placeholder="Your name" class="form-input" />
+        <input type="tel" placeholder="Phone number" class="form-input" />
+      </div>
+      <select class="form-input" style="margin-bottom:12px;">
+        <option value="" disabled selected>What do you need?</option>
+        <option>Free AC Inspection</option>
+        <option>AC Repair</option>
+        <option>AC Installation / Replacement</option>
+        <option>Heating / Furnace Repair</option>
+        <option>Maintenance Tune-Up</option>
+        <option>Emergency Service</option>
+      </select>
+      <button class="form-submit">Book My Free Inspection →</button>
+      <p class="form-note">We'll call or text you back fast.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE AREA -->
+<section>
+  <div class="container">
+    <div class="section-tag">Where We Work</div>
+    <h2 class="section-title">Serving the Entire<br/>West Valley</h2>
+    <p class="section-sub">Based in Buckeye — we get to you fast anywhere in the West Valley.</p>
+    <div class="areas">
+      <span class="area-chip primary">📍 Buckeye</span>
+      <span class="area-chip">Goodyear</span>
+      <span class="area-chip">Avondale</span>
+      <span class="area-chip">Litchfield Park</span>
+      <span class="area-chip">Tolleson</span>
+      <span class="area-chip">Verrado</span>
+      <span class="area-chip">Sun Valley</span>
+      <span class="area-chip">Tonopah</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Pat's<span> AC & Heating</span></div>
+  <div class="footer-phone"><a href="tel:6233864061">(623) 386-4061</a></div>
+  <div class="footer-details">
+    26103 W US Hwy 85, Buckeye, AZ 85326<br/>
+    Open 7 Days · 8:00 AM – 5:00 PM · AZ ROC 259434
+  </div>
+  <hr class="footer-divider" />
+  <div class="footer-credit">Site concept by <a href="https://faststartmarketer.com" style="color:rgba(217,119,6,0.7);">FastStartMarketer.com</a></div>
+</footer>
+
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:6233864061" class="float-call">
+  📞 <span class="float-label">Call Pat's</span>
+</a>
+
+</body>
+</html>
